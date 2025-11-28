@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "c215c90a-786c-4e82-b3c3-47c74e1fb2b1",
+		"name": "Real Time Data Processing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36293538"
+	},
+	"item": [
+		{
+			"name": "Ingest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"key\": \"global\",\n  \"items\": [\n    { \"value\": 16, \"type\": \"temp\" },\n    { \"value\": 26, \"type\": \"temp\" },\n    { \"value\": 46, \"type\": \"temp\" }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/data/ingest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"data",
+						"ingest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aggregate Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/data/stats?key=global",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"data",
+						"stats"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "global",
+							"description": "global or load"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HIstory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/data/history?limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"data",
+						"history"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
