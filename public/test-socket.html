@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <h1>Socket.io Real-Time Test</h1>
+      <pre div id="log"></div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <script>
+      const socket = io("http://localhost:3000/ws", { path: "/ws" });
+
+      socket.on("stats:updates", (data) => {
+        console.log("Job completed update received:", data);
+        const logDiv = document.getElementById("log");
+        logDiv.innerHTML += `<p>Job ${data.jobId} completed with value ${data.value}</p>`;
+      });
+    </script>
+  </body>
+</html>
